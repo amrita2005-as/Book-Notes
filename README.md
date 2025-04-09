@@ -45,20 +45,18 @@ A cozy, dark-themed web app to jot down notes and summaries of your favorite boo
   isbn TEXT,
   rate INT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ); 
 - Update the database credentials in your index.js file if needed:
 - ```const db = new pg.Client({
   user: "your-username",
   host: "localhost",
   database: "Book_Notes",
   password: "your-password",
-  port: 5432,
-});
+  port: 5432,});
 ### 4. Start the App
 - ```node index.js```
 
 ## 📜 License
 - This project is licensed under the MIT License.
 
-# Made with ☕, curiosity, and lots of bookmarked pages.
+### Made with ☕, curiosity, and lots of bookmarked pages.
