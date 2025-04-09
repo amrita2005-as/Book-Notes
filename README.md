@@ -28,15 +28,15 @@ A cozy, dark-themed web app to jot down notes and summaries of your favorite boo
 ## 💾 Setup Instructions
 
 ### 1. Clone the repositor
-git clone https://github.com/your-username/book-notes-app.git
-cd book-notes-app
+```git clone https://github.com/your-username/book-notes-app.git```
+```cd book-notes-app```
 
 ### 2. Install dependencies
 ```npm install```
 ### 3. Configure the PostgreSQL Database
-Make sure PostgreSQL is installed and running on your system.
-Create a database named Book_Notes and run the following SQL schema:
-CREATE TABLE book_notes (
+- Make sure PostgreSQL is installed and running on your system.
+- Create a database named Book_Notes and run the following SQL schema:
+- ```CREATE TABLE book_notes (
   id SERIAL PRIMARY KEY,
   book_title TEXT NOT NULL,
   author TEXT,
@@ -46,15 +46,15 @@ CREATE TABLE book_notes (
   rate INT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-Update the database credentials in your index.js file if needed:
-const db = new pg.Client({
+);```
+- Update the database credentials in your index.js file if needed:
+- ```const db = new pg.Client({
   user: "your-username",
   host: "localhost",
   database: "Book_Notes",
   password: "your-password",
   port: 5432,
-});
+});```
 ### 4. Start the App
-node index.js
+- ```node index.js```
 
