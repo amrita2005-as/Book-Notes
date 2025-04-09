@@ -57,6 +57,6 @@ A cozy, dark-themed web app to jot down notes and summaries of your favorite boo
 - ```node index.js```
 
 ## 📜 License
-- This project is licensed under the MIT License.
+- This project is licensed under the **MIT License**.
 
 ### Made with ☕, curiosity, and lots of bookmarked pages.
