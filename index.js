@@ -8,8 +8,8 @@ const port = 3000;
 const db = new pg.Client({
   user: "postgres",
   host: "localhost",
-  database: "Book_Notes",
-  password: "Ilovehatemyself8000!",
+  database: "database_name",
+  password: "your_passwords",
   port: 5432,
 });
 
@@ -59,15 +59,15 @@ app.post("/add", async (req, res) => {
 // POST Edit book
 app.post("/edit/:id", async (req, res) => {
   const id = req.params.id;
-  const { book_title, author, summary, note, isbn } = req.body;
+  const { book_title, author, summary, note, isbn, rate } = req.body;
   const coverURL = isbn
     ? `https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`
     : null;
 
   try {
     await db.query(
-      "UPDATE book_notes SET book_title = $1, author = $2, summary = $3, note = $4, isbn = $5, cover_url = $6, updated_at = NOW() WHERE id = $7",
-      [book_title, author, summary, note, isbn, coverURL, id]
+      "UPDATE book_notes SET book_title = $1, author = $2, summary = $3, note = $4, isbn = $5, cover_url = $6, rate = $7 updated_at = NOW() WHERE id = $8",
+      [book_title, author, summary, note, isbn, coverURL, rate, id]
     );
     res.redirect("/");
   } catch (error) {
