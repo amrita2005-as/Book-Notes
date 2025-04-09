@@ -1,0 +1,82 @@
+<%- include('partials/header.ejs') %>
+
+<div class="notes">
+  <h1>Book Notes 📖</h1>
+  <div class="intro"><h3>Welcome to your personal library of thoughts and reflections! Here, you can track the books 
+    you’ve read, jot down your thoughts, and create a collection of summaries, notes, and ideas. 
+    Whether you're a book lover, student, or simply looking for a way to remember your reading experiences, 
+    Book Notes offers a space to store and revisit the books that have made an impact on you. 
+    You can also view the books in the order of their <a href="/ratings" class="rating">ratings </a> ! </h3> 
+</div>
+  <% items.forEach(book => { %>
+    <div class="book-card">
+      <form id="form-<%= book.id %>" action="/edit/<%= book.id %>" method="POST">
+
+        <div id="display-<%= book.id %>">
+          <% if (book.cover_url) { %>
+            <img src="<%= book.cover_url %>" alt="Cover for <%= book.book_title %>" style="width: 150px;">
+          <% } %>
+          <h2><%= book.book_title %></h2>
+          <p><strong>Author:</strong> <%= book.author %></p>
+          <p><strong>Summary:</strong> <%= book.summary %></p>
+          <p><strong>Note:</strong> <%= book.note %></p>
+          <p><strong>Created at:</strong> <%= book.created_at %></p>
+          <p><strong>Updated at:</strong> <%= book.updated_at %></p>
+          <p><strong>Rating:</strong> <%= book.rate %>/10</p>
+          <button type="button" onclick="enableEdit('<%= book.id %>')">Edit</button>
+        </div>
+
+        <div id="edit-<%= book.id %>" style="display: none;">
+          <input type="text" name="book_title" value="<%= book.book_title %>" required />
+          <input type="text" name="author" value="<%= book.author %>" required />
+          <textarea name="summary" rows="2"><%= book.summary %></textarea>
+          <textarea name="note" rows="2"><%= book.note %></textarea>
+          <input type="text" name="isbn" value="<%= book.isbn %>" placeholder="ISBN" />
+          <input type="text" name="book_rate" value="<%= book.rate %>" required />
+          <button type="submit">Save</button>
+          <button type="button" onclick="cancelEdit('<%= book.id %>')">Cancel</button>
+        </div>
+
+      </form>
+      <form action="/delete/<%= book.id %>" method="POST" style="display:inline;">
+        <button type="submit" onclick="return confirm('Are you sure you want to delete this book?');">Delete</button>
+      </form>
+    </div>
+  <% }); %>
+
+  <button id="add-book-btn" onclick="showAddForm()">Add</button>
+  <form id="add-book-form" action="/add" method="post" style="display: none;">
+    <label>Book title:</label>
+    <input type="text" name="newTitle" placeholder="New Book title" autocomplete="off" autofocus />
+    <label>Author name:</label>
+    <input type="text" name="newAuthname" placeholder="New Author" autocomplete="off" />
+    <label>Summary:</label>
+    <input type="text" name="newSum" placeholder="Add a summary" autocomplete="off" />
+    <label>Note:</label>
+    <input type="text" name="newNote" placeholder="New note" autocomplete="off" />
+    <label>ISBN:</label>
+    <input type="text" name="newISBN" placeholder="e.g. 9780140328721" autocomplete="off" />
+    <label>Rating:</label>
+    <input type="text" name="newRate" placeholder="Rate the book out of 10" autocomplete="off" />
+    <button class="add" type="submit">Save</button>
+  </form>
+</div>
+
+<script>
+  function showAddForm() {
+    document.getElementById('add-book-btn').style.display = 'none'; 
+    document.getElementById('add-book-form').style.display = 'block'; 
+  }
+
+  function enableEdit(id) {
+    document.getElementById(`display-${id}`).style.display = "none";
+    document.getElementById(`edit-${id}`).style.display = "block";
+  }
+
+  function cancelEdit(id) {
+    document.getElementById(`display-${id}`).style.display = "block";
+    document.getElementById(`edit-${id}`).style.display = "none";
+  }
+</script>
+
+<%- include('partials/footer.ejs') %>
