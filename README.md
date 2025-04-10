@@ -27,7 +27,7 @@ A cozy, dark-themed web app to jot down notes and summaries of your favorite boo
 
 ## 💾 Setup Instructions
 
-### 1. Clone the repositor
+### 1. Clone the repository
 - ```git clone https://github.com/your-username/book-notes-app.git```
 - ```cd book-notes-app```
 
