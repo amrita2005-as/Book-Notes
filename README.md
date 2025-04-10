@@ -32,7 +32,7 @@ A cozy, dark-themed web app to jot down notes and summaries of your favorite boo
 - ```cd book-notes-app```
 
 ### 2. Install dependencies
-```npm install```
+- ```npm install```
 ### 3. Configure the PostgreSQL Database
 - Make sure PostgreSQL is installed and running on your system.
 - Create a database named Book_Notes and run the following SQL schema:
